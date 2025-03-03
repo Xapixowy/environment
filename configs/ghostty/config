@@ -1,0 +1,5 @@
+window-padding-color = background
+theme = "Dark Pastel"
+font-family = "GeistMono Nerd Font"
+font-size = 14
+font-feature = -liga
