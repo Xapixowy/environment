@@ -117,7 +117,7 @@ function install_fonts() {
 function install_ghostty() {
     brew install --cask ghostty > /dev/null 2>&1
 
-    CONFIG_SOURCE="configs/ghostty/config"
+    CONFIG_SOURCE="./configs/ghostty/config"
     CONFIG_DEST_DIR="$HOME/Library/Application Support/com.mitchellh.ghostty"
     CONFIG_DEST="$CONFIG_DEST_DIR/config"
 
@@ -143,12 +143,70 @@ function install_nvm_and_node() {
     nvm install --lts > /dev/null 2>&1
 }
 
+function install_webstorm() {
+    DOWNLOAD_PAGE="https://data.services.jetbrains.com/products/releases?code=WS&latest=true&type=release"
+    JSON_RESPONSE=$(curl -s "$DOWNLOAD_PAGE")
+    DOWNLOAD_LINK=$(echo "$JSON_RESPONSE" | grep -oE 'https://download\.jetbrains\.com/webstorm/WebStorm-[0-9.]+-aarch64\.dmg' | head -1)
+
+    if [[ -z "$DOWNLOAD_LINK" ]]; then
+        echo "❌ Failed to find the WebStorm download link for Apple Silicon!"
+        exit 1
+    fi
+
+    curl -L "$DOWNLOAD_LINK" -o webstorm.dmg
+    MOUNT_DIR=$(hdiutil attach webstorm.dmg | grep "Volumes" | awk '{print $3}')
+
+    if [[ -z "$MOUNT_DIR" ]]; then
+        echo "❌ Failed to mount the DMG file!"
+        exit 1
+    fi
+
+    cp -R "$MOUNT_DIR/WebStorm.app" /Applications
+    hdiutil detach "$MOUNT_DIR"
+    rm -f webstorm.dmg
+}
+
+function install_vscode() {
+    brew install --cask visual-studio-code > /dev/null 2>&1
+
+    VSCODE_CONFIG_PATH="$HOME/Library/Application Support/Code/User"
+    CONFIG_SOURCE_PATH="./configs/vscode"
+
+    mkdir -p "$VSCODE_CONFIG_PATH"
+    cp "$CONFIG_SOURCE_PATH/settings.json" "$VSCODE_CONFIG_PATH/"
+    cp "$CONFIG_SOURCE_PATH/keybindings.json" "$VSCODE_CONFIG_PATH/"
+    cat "$CONFIG_SOURCE_PATH/extensions.txt" | xargs -n 1 code --install-extension
+}
+
+function install_cli_tools() {
+    npm install -g @angular/cli # Angular CLI
+}
+
+function install_other_brew_apps() {
+    brew install --cask rectangle # Move and resize windows
+    brew install --cask alt-tab # Windows-like window switching
+    brew install --cask clipbook # Clipboard manager
+    brew install --cask karabiner-elements # Keyboard customization tool (swaps § with ~)
+    brew install --cask linearmouse # Mouse customization tool (turns off acceleration)
+    brew install --cask brave-browser
+    brew install --cask discord
+    brew install --cask notion
+    brew install --cask postman
+    brew install --cask docker
+    brew install --cask dbeaver-community
+    brew install --cask google-drive
+}
+
 function install_everything() {
     decorate_with_logging "Installing Homebrew" install_homebrew
     decorate_with_logging "Installing Fonts" install_fonts
     decorate_with_logging "Installing Ghostty" install_ghostty
     decorate_with_logging "Installing Spaceship" install_spaceship
     decorate_with_logging "Installing Node and NPM" install_nvm_and_node
+    decorate_with_logging "Installing WebStorm" install_webstorm
+    decorate_with_logging "Installing VS Code" install_vscode
+    decorate_with_logging "Installing CLI Tools" install_cli_tools
+    decorate_with_logging "Installing Other Brew Apps" install_other_brew_apps
 }
 
 function main() {

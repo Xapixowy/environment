@@ -1,0 +1,145 @@
+{
+    // Theme
+    "workbench.colorTheme": "Bearded Theme Vivid Black",
+    "workbench.preferredDarkColorTheme": "Bearded Theme Vivid Black",
+    "workbench.iconTheme": "bearded-icons",
+    "workbench.colorCustomizations": {
+        "terminal.ansiBlack": "#000000",
+        "terminal.ansiBlue": "#5555ff",
+        "terminal.ansiBrightBlack": "#555555",
+        "terminal.ansiBrightBlue": "#5555ff",
+        "terminal.ansiBrightCyan": "#55ffff",
+        "terminal.ansiBrightGreen": "#55ff55",
+        "terminal.ansiBrightMagenta": "#ff55ff",
+        "terminal.ansiBrightRed": "#ff5555",
+        "terminal.ansiBrightWhite": "#ffffff",
+        "terminal.ansiBrightYellow": "#ffff55",
+        "terminal.ansiCyan": "#55ffff",
+        "terminal.ansiGreen": "#55ff55",
+        "terminal.ansiMagenta": "#ff55ff",
+        "terminal.ansiRed": "#ff5555",
+        "terminal.ansiWhite": "#bbbbbb",
+        "terminal.ansiYellow": "#ffff55"
+    },
+    "editor.fontFamily": "FiraCode Nerd Font",
+    "editor.fontSize": 16,
+    "editor.lineHeight": 24,
+    "editor.fontLigatures": true,
+    "workbench.sideBar.location": "right",
+    "explorer.decorations.badges": true,
+    "window.title": "${dirty}${activeEditorLong}",
+    "breadcrumbs.symbolPath": "off",
+    "breadcrumbs.icons": false,
+    "editor.cursorBlinking": "expand",
+    "editor.cursorSmoothCaretAnimation": "on",
+    "editor.minimap.enabled": false,
+
+    // Editor
+    "workbench.startupEditor": "newUntitledFile",
+    "workbench.editor.enablePreview": true,
+    "editor.wordWrap": "on",
+    "diffEditor.wordWrap": "off",
+    "editor.mouseWheelZoom": true,
+    "editor.linkedEditing": true,
+    "editor.detectIndentation": false,
+    "editor.maxTokenizationLineLength": 10000,
+
+    "editor.inlayHints.enabled": "offUnlessPressed",
+    "javascript.inlayHints.enumMemberValues.enabled": true,
+    "javascript.inlayHints.functionLikeReturnTypes.enabled": true,
+    "javascript.inlayHints.parameterNames.enabled": "all",
+    "javascript.inlayHints.parameterTypes.enabled": true,
+    "javascript.inlayHints.propertyDeclarationTypes.enabled": true,
+    "javascript.inlayHints.variableTypes.enabled": true,
+    "typescript.inlayHints.enumMemberValues.enabled": true,
+    "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
+    "typescript.inlayHints.parameterNames.enabled": "all",
+    "typescript.inlayHints.parameterTypes.enabled": true,
+    "typescript.inlayHints.propertyDeclarationTypes.enabled": true,
+    "typescript.inlayHints.variableTypes.enabled": true,
+
+    // Color Highlight
+    "editor.colorDecorators": false,
+    "color-highlight.markerType": "underline",
+
+    // Prettier
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "prettier.tabWidth": 4,
+    "prettier.singleQuote": true,
+    "prettier.semi": true,
+    "prettier.trailingComma": "all",
+    "prettier.proseWrap": "never",
+    "prettier.printWidth": 120,
+
+    // Live Sass Compiler
+    "liveSassCompile.settings.formats": [
+        {
+            "format": "compressed",
+            "extensionName": ".css",
+            "savePath": "/css"
+        }
+    ],
+    "liveSassCompile.settings.autoprefix": ["> 1%", "last 2 versions"],
+    "liveSassCompile.settings.showOutputWindowOn": "Error",
+
+    // Live Server
+    "liveServer.settings.ignoreFiles": [".vscode/**", "**/*.ts"],
+    "liveServer.settings.NoBrowser": true,
+    "liveServer.settings.donotShowInfoMsg": true,
+    "liveServer.settings.donotVerifyTags": true,
+
+    // Emmet
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact"
+    },
+
+    "editor.inlineSuggest.enabled": true,
+    "github.copilot.enable": {
+        "*": true,
+        "plaintext": false,
+        "markdown": true,
+        "scminput": false
+    },
+    "php.executables": {
+        "php8.2": "C:\\tools\\php82\\php.exe"
+    },
+    "php.version": "php8.2",
+    "remote.SSH.remotePlatform": {
+        "s1.dowozimyzasiegi.pl": "linux",
+        "vps-511b5f6b.vps.ovh.net": "linux"
+    },
+    "inlineChat.showGutterIcon": true,
+    "workbench.activityBar.location": "hidden",
+    "workbench.editorAssociations": {
+        "*.copilotmd": "vscode.markdown.preview.editor",
+        "*.pdf": "latex-workshop-pdf-hook"
+    },
+    "latex-workshop.latex.tools": [
+        {
+            "name": "latexmk",
+            "command": "latexmk",
+            "args": ["-synctex=1", "-interaction=nonstopmode", "-file-line-error", "-pdf", "-outdir=%OUTDIR%", "%DOC%"],
+            "env": {}
+        },
+        {
+            "name": "pdflatex",
+            "command": "pdflatex",
+            "args": ["-synctex=1", "-shell-escape", "-interaction=nonstopmode", "-file-line-error", "%DOC%"],
+            "env": {}
+        },
+        {
+            "name": "bibtex",
+            "command": "bibtex",
+            "args": ["%DOCFILE%"],
+            "env": {}
+        }
+    ],
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "pdflatex",
+            "tools": ["pdflatex"]
+        }
+    ],
+    "latex-workshop.latex.recipe.default": "pdflatex"
+}
