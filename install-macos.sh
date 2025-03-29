@@ -97,9 +97,11 @@ function install_homebrew() {
         
         # Add Homebrew to PATH (for Intel and Apple Silicon processors)
         if [[ "$(uname -m)" == "arm64" ]]; then
+            # Apple Silicon (M1/M2)
             echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zshrc
             eval "$(/opt/homebrew/bin/brew shellenv)"
         else
+            # Intel
             echo 'eval "$(/usr/local/bin/brew shellenv)"' >> ~/.zshrc
             eval "$(/usr/local/bin/brew shellenv)"
         fi
@@ -203,7 +205,7 @@ function install_everything() {
     decorate_with_logging "Installing Ghostty" install_ghostty
     decorate_with_logging "Installing Spaceship" install_spaceship
     decorate_with_logging "Installing Node and NPM" install_nvm_and_node
-    decorate_with_logging "Installing WebStorm" install_webstorm
+    # decorate_with_logging "Installing WebStorm" install_webstorm
     decorate_with_logging "Installing VS Code" install_vscode
     decorate_with_logging "Installing CLI Tools" install_cli_tools
     decorate_with_logging "Installing Other Brew Apps" install_other_brew_apps
